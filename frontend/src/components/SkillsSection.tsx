@@ -4,10 +4,10 @@ import {
   SiDjango,
   SiGit,
   SiGo,
-  SiJavascript,
   SiLinux,
   SiMysql,
   SiPostgresql,
+  SiPostman,
   SiPython,
   SiReact,
   SiTypescript,
@@ -23,7 +23,7 @@ type SkillItem = {
 }
 
 type SkillGroup = {
-  title: string
+title: string
   description: string
   icon: IconType
   items: SkillItem[]
@@ -67,7 +67,7 @@ const groups: SkillGroup[] = [
       { name: 'Docker', icon: SiDocker },
       { name: 'Git', icon: SiGit },
       { name: 'Linux', icon: SiLinux },
-      { name: 'JavaScript', icon: SiJavascript },
+      { name: 'Postman', icon: SiPostman },
     ],
   },
 ]
