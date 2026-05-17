@@ -4,11 +4,7 @@ import PortfolioSections from './components/PortfolioSections'
 import './App.css'
 
 type ProfileResponse = {
-  name: string
   headline: string
-  location: string
-  intro: string
-  bio: string
   cta: {
     label: string
     href: string
@@ -16,11 +12,7 @@ type ProfileResponse = {
 }
 
 const fallbackProfile: ProfileResponse = {
-  name: 'Vitor',
-  headline: 'Desenvolvedor Back-end Go',
-  location: 'Brasil',
-  intro: 'Olá, meu nome é Vitor.',
-  bio: 'Desenvolvedor independente focado em Go, APIs e sistemas web.',
+  headline: 'focado em Go, Node.js e Python.',
   cta: {
     label: 'Me contrate',
     href: '#contact',
@@ -45,8 +37,11 @@ function App() {
           throw new Error('Falha ao carregar perfil')
         }
 
-        const data = (await response.json()) as ProfileResponse
-        setProfile(data)
+        const data = (await response.json()) as Partial<ProfileResponse>
+        setProfile({
+          headline: data.headline ?? fallbackProfile.headline,
+          cta: data.cta ?? fallbackProfile.cta,
+        })
       } catch {
         if (controller.signal.aborted) {
           return
@@ -68,9 +63,8 @@ function App() {
   }, [])
 
   const activeProfile = profile ?? fallbackProfile
-  const subtitle = `Desenvolvedor Back-end focado em Go no ${activeProfile.location}.`
   const description =
-    'Desenvolvo APIs, automações e sistemas web utilizando Go, Python e Java.'
+    'Desenvolvo aplicações full stack, criando APIs, integrações e automações para transformar processos e ideias em soluções escaláveis.'
 
   return (
     <main className="portfolio-shell" id="top">
@@ -78,8 +72,7 @@ function App() {
         ctaHref={activeProfile.cta.href}
         isLoading={isLoading}
         hasError={hasError}
-        name={activeProfile.name}
-        subtitle={subtitle}
+        subtitle={activeProfile.headline}
         description={description}
       />
       <PortfolioSections />

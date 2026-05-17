@@ -12,7 +12,7 @@ function AboutSection() {
     >
       <SectionIntro
         title="Sobre Mim"
-        description="Sou desenvolvedor de software com foco em backend, criação de APIs, automações e sistemas web. Trabalho com Go, Python, Java e PostgreSQL."
+        description="Sou desenvolvedor de software com foco em backend, criação de APIs, automações e sistemas web. Trabalho principalmente com Go, Node.js,Python e PostgreSQL."
       />
     </section>
   )

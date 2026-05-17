@@ -2,11 +2,7 @@
 import App from './App'
 
 const profilePayload = {
-  name: 'Vitor',
-  headline: 'Desenvolvedor Back-end Go',
-  location: 'Brasil',
-  intro: 'Olá, meu nome é Vitor.',
-  bio: 'Desenvolvedor independente focado em Go, APIs e sistemas web.',
+  headline: 'focado em Go, Node.js e Python.',
   cta: {
     label: 'Me contrate',
     href: '#contato',
@@ -40,20 +36,20 @@ describe('App hero', () => {
     render(<App />)
 
     await waitFor(() => {
-      expect(screen.getByText('Meu nome é')).toBeInTheDocument()
+      expect(screen.getByText('Backend Developer')).toBeInTheDocument()
     })
 
-    expect(screen.getByText('Vitor.')).toBeInTheDocument()
+    expect(screen.getByText('Olá, me chamo Vitor Angelozi.')).toBeInTheDocument()
     expect(
-      screen.getByText('Desenvolvedor Back-end focado em Go no Brasil.'),
+      screen.getByText('focado em Go, Node.js e Python.'),
     ).toBeInTheDocument()
     expect(
       screen.getByText(
-        'Desenvolvo APIs, automações e sistemas web utilizando Go, Python e Java.',
+        'Desenvolvo aplicações full stack, criando APIs, integrações e automações para transformar processos e ideias em soluções escaláveis.',
       ),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('link', { name: /ENTRAR EM CONTATO/i }),
+      screen.getByRole('link', { name: /entre em contato/i }),
     ).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /VER PROJETOS/i })).toBeInTheDocument()
     expect(
@@ -62,6 +58,15 @@ describe('App hero', () => {
     expect(screen.getByText('Saiba mais sobre mim')).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Sobre Mim' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Competências' })).toBeInTheDocument()
+    expect(
+      screen.getByText('10+ tecnologias utilizadas no desenvolvimento de software.'),
+    ).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Backend' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Frontend' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: 'Banco de Dados' }),
+    ).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Ferramentas' })).toBeInTheDocument()
     expect(
       screen.getByRole('heading', { name: 'Projetos em Destaque' }),
     ).toBeInTheDocument()
@@ -74,6 +79,9 @@ describe('App hero', () => {
     expect(screen.getByText('Integração JACAD')).toBeInTheDocument()
     expect(screen.getByText('Codado')).toBeInTheDocument()
     expect(screen.getByText('Banco de Talentos')).toBeInTheDocument()
+    expect(screen.getByText('Go')).toBeInTheDocument()
+    expect(screen.getByText('React')).toBeInTheDocument()
+    expect(screen.getByText('Docker')).toBeInTheDocument()
     expect(screen.getAllByText('GitHub').length).toBeGreaterThan(0)
     expect(screen.getByText('LinkedIn')).toBeInTheDocument()
     expect(screen.getByText('Email')).toBeInTheDocument()
@@ -90,9 +98,8 @@ describe('App hero', () => {
       )
     })
 
-    expect(screen.getByText('Vitor.')).toBeInTheDocument()
-    expect(
-      screen.getByText('Desenvolvedor Back-end focado em Go no Brasil.'),
-    ).toBeInTheDocument()
+    expect(screen.getByText('Olá, me chamo Vitor Angelozi.')).toBeInTheDocument()
+    expect(screen.getByText('Backend Developer')).toBeInTheDocument()
+    expect(screen.getByText('focado em Go, Node.js e Python.')).toBeInTheDocument()
   })
 })

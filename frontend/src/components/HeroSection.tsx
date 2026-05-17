@@ -1,19 +1,34 @@
+import type { CSSProperties } from 'react'
 import ScrollIndicator from './ScrollIndicator'
 
 type HeroSectionProps = {
   ctaHref: string
   isLoading: boolean
   hasError: boolean
-  name: string
   subtitle: string
   description: string
+}
+
+function renderWaveText(text: string) {
+  return (
+    <span className="wave-text" aria-hidden="true">
+      {text.split('').map((char, index) => (
+        <span
+          className="wave-char"
+          style={{ '--char-index': index } as CSSProperties}
+          key={`${char}-${index}`}
+        >
+          {char === ' ' ? '\u00A0' : char}
+        </span>
+      ))}
+    </span>
+  )
 }
 
 function HeroSection({
   ctaHref,
   isLoading,
   hasError,
-  name,
   subtitle,
   description,
 }: HeroSectionProps) {
@@ -21,12 +36,12 @@ function HeroSection({
     <section className="portfolio-card hero-section">
       <header className="topbar">
         <div className="brand-wrap">
-          <span className="brand-mark" aria-hidden="true"></span>
-          <span className="brand-name">VITOR DEV</span>
+          <span className="brand-name" aria-label="vitor angelozi">
+            {renderWaveText('vitor angelozi')}
+          </span>
         </div>
-        <a className="hire-link" href={ctaHref}>
-          <span className="hire-icon" aria-hidden="true"></span>
-          ENTRAR EM CONTATO
+        <a className="hire-link" href={ctaHref} aria-label="entre em contato">
+          {renderWaveText('entre em contato')}
         </a>
       </header>
 
@@ -44,10 +59,9 @@ function HeroSection({
 
       <div className="hero-grid">
         <div className="hero-copy">
-          <p className="intro">Olá, meu nome é Vitor.</p>
+          <p className="intro">Olá, me chamo Vitor Angelozi.</p>
           <h1>
-            <span>Meu nome é</span>
-            <strong>{name}.</strong>
+            <strong>Backend Developer</strong>
           </h1>
           <p className="subtitle">{subtitle}</p>
           <p className="description">{description}</p>

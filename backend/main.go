@@ -35,7 +35,7 @@ func newRouter() *gin.Engine {
 	api.GET("/profile", func(c *gin.Context) {
 		c.JSON(http.StatusOK, profileResponse{
 			Name:     "Vitor",
-			Headline: "Desenvolvedor Back-end Go",
+			Headline: "Desenvolvedor focado em Go, Node.js e Python",
 			Location: "Brasil",
 			Intro:    "Olá, meu nome é Vitor.",
 			Bio:      "Desenvolvedor independente focado em Go, APIs e sistemas web.",
