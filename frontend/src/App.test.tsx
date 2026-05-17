@@ -59,6 +59,24 @@ describe('App hero', () => {
     expect(
       screen.getByRole('link', { name: /BAIXAR CURRÍCULO/i }),
     ).toBeInTheDocument()
+    expect(screen.getByText('Saiba mais sobre mim')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Sobre Mim' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Competências' })).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: 'Projetos em Destaque' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: 'Experiência Profissional' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: 'Entre em Contato' }),
+    ).toBeInTheDocument()
+    expect(screen.getByText('Integração JACAD')).toBeInTheDocument()
+    expect(screen.getByText('Codado')).toBeInTheDocument()
+    expect(screen.getByText('Banco de Talentos')).toBeInTheDocument()
+    expect(screen.getAllByText('GitHub').length).toBeGreaterThan(0)
+    expect(screen.getByText('LinkedIn')).toBeInTheDocument()
+    expect(screen.getByText('Email')).toBeInTheDocument()
   })
 
   it('renders fallback and error message when request fails', async () => {
