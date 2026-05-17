@@ -1,0 +1,12 @@
+# Workspace / IDE
+.idea/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db

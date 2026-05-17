@@ -41,7 +41,7 @@ func newRouter() *gin.Engine {
 			Bio:      "Desenvolvedor independente focado em Go, APIs e sistemas web.",
 			CTA: cta{
 				Label: "Me contrate",
-				Href:  "#contato",
+				Href:  "#contact",
 			},
 		})
 	})
