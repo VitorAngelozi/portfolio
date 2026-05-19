@@ -2,12 +2,25 @@ import type { CSSProperties } from 'react'
 import ScrollIndicator from './ScrollIndicator'
 
 type HeroSectionProps = {
-  ctaHref: string
-  isLoading: boolean
-  hasError: boolean
+  cta: {
+    label: string
+    href: string
+  }
   subtitle: string
   description: string
 }
+
+const terminalLines = [
+  { prompt: '$', command: 'whoami', output: 'vitor_angelozi' },
+  { prompt: '$', command: 'scan --stack', output: 'go node python react typescript' },
+  { prompt: '$', command: 'status --focus', output: 'apis automations backend systems' },
+]
+
+const modules = [
+  { label: 'API', value: 'REST + integrações', level: 92 },
+  { label: 'CORE', value: 'Go / Node / Python', level: 88 },
+  { label: 'UI', value: 'React + TypeScript', level: 76 },
+]
 
 function renderWaveText(text: string) {
   return (
@@ -25,71 +38,104 @@ function renderWaveText(text: string) {
   )
 }
 
-function HeroSection({
-  ctaHref,
-  isLoading,
-  hasError,
-  subtitle,
-  description,
-}: HeroSectionProps) {
+function HeroSection({ cta, subtitle, description }: HeroSectionProps) {
   return (
     <section className="portfolio-card hero-section">
       <header className="topbar">
-        <div className="brand-wrap">
-          <span className="brand-name" aria-label="vitor angelozi">
-            {renderWaveText('vitor angelozi')}
-          </span>
-        </div>
-        <a className="hire-link" href={ctaHref} aria-label="entre em contato">
-          {renderWaveText('entre em contato')}
+        <a className="brand-name" href="#top" aria-label="voltar ao topo">
+          {renderWaveText('VITOR.EXE')}
+          <span className="brand-badge">PORTFOLIO</span>
+        </a>
+
+        <nav className="topnav" aria-label="Navegação principal">
+          <a href="#about">SOBRE</a>
+          <a href="#skills">STACK</a>
+          <a href="#projects">PROJETOS</a>
+        </nav>
+
+        <a className="hire-link" href={cta.href} aria-label={cta.label}>
+          {renderWaveText('[ CONTATO ]')}
         </a>
       </header>
 
-      {isLoading ? (
-        <p className="status" role="status">
-          Carregando perfil...
-        </p>
-      ) : null}
-
-      {hasError ? (
-        <p className="status status-error" role="alert">
-          API indisponível no momento. Exibindo conteúdo padrão.
-        </p>
-      ) : null}
-
       <div className="hero-grid">
         <div className="hero-copy">
-          <p className="intro">Olá, me chamo Vitor Angelozi.</p>
+          <p className="intro">:: sistema iniciado / perfil detectado</p>
           <h1>
-            <strong>Backend Developer</strong>
+            <span>VITOR</span>
+            <strong>ANGELOZI</strong>
           </h1>
+          <p className="role-line">Backend Developer</p>
           <p className="subtitle">{subtitle}</p>
           <p className="description">{description}</p>
+
           <div className="hero-actions">
             <a className="btn btn-primary" href="#projects">
-              <svg viewBox="0 0 20 20" aria-hidden="true">
-                <path d="M6 5l-3 5 3 5h3l-3-5 3-5H6zm8 0l3 5-3 5h-3l3-5-3-5h3z" />
-              </svg>
+              <span aria-hidden="true">&gt;</span>
               VER PROJETOS
             </a>
             <a className="btn btn-ghost" href="/curriculo-vitor.pdf" download>
-              <svg viewBox="0 0 20 20" aria-hidden="true">
-                <path d="M9 3h2v7l2.5-2.5 1.4 1.4L10 14l-4.9-5.1 1.4-1.4L9 10V3zm-5 12h12v2H4v-2z" />
-              </svg>
+              <span aria-hidden="true">#</span>
               BAIXAR CURRÍCULO
             </a>
           </div>
         </div>
 
-        <div className="hero-visual">
-          <figure className="portrait">
-            {/* The original avatar file had a baked-in light background, so the hero now uses a transparent PNG cutout. */}
-            <img
-              src="/img-of-my-self-transparent-v2.png"
-              alt="Foto de Vitor estilizada em duotone azul"
-            />
-          </figure>
-        </div>
+        <aside className="terminal-preview" aria-label="Resumo técnico em formato terminal">
+          <div className="terminal-preview__bar">
+            <span>portfolio.term</span>
+            <span className="terminal-preview__status">ONLINE</span>
+          </div>
+
+          <div className="terminal-preview__screen">
+            <div className="terminal-preview__scanline" aria-hidden="true"></div>
+
+            <div className="terminal-block terminal-block--profile">
+              <p className="terminal-kicker">USER PROFILE</p>
+              <h2>BACKEND_DEV</h2>
+              <p>Local modules ready. Building APIs, automations and web systems.</p>
+            </div>
+
+            <div className="terminal-log">
+              {terminalLines.map((line) => (
+                <div className="terminal-log__row" key={line.command}>
+                  <span>{line.prompt}</span>
+                  <code>{line.command}</code>
+                  <strong>{line.output}</strong>
+                </div>
+              ))}
+            </div>
+
+            <div className="terminal-modules">
+              {modules.map((module) => (
+                <div className="terminal-module" key={module.label}>
+                  <div>
+                    <span>{module.label}</span>
+                    <strong>{module.value}</strong>
+                  </div>
+                  <div className="terminal-meter" aria-label={`${module.label} ${module.level}%`}>
+                    <span style={{ width: `${module.level}%` }}></span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="terminal-stats">
+              <div>
+                <span>STACK</span>
+                <strong>10+</strong>
+              </div>
+              <div>
+                <span>MODE</span>
+                <strong>BUILD</strong>
+              </div>
+              <div>
+                <span>STATUS</span>
+                <strong>READY</strong>
+              </div>
+            </div>
+          </div>
+        </aside>
       </div>
 
       <ScrollIndicator />

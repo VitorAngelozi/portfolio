@@ -1,14 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800&family=Source+Sans+3:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Share+Tech+Mono&display=swap');
+@import "tailwindcss";
 
 :root {
-  --bg-main: #e7ecf3;
-  --surface: #e7ecf3;
-  --ink-main: #182b58;
-  --ink-muted: #5a6785;
-  --line: #6d3acb;
-  --blue-soft: #9dd5e8;
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Source Sans 3', 'Trebuchet MS', sans-serif;
+  --bg-main: #202020;
+  --surface: #202426;
+  --surface-deep: #171717;
+  --text-main: #efefef;
+  --text-muted: #9ca0ad;
+  --text-dim: #777b86;
+  --text-olive: #9bb7b2;
+  --accent: #4dd8c8;
+  --accent-hover: #7ee7dc;
+  --accent-rgb: 77, 216, 200;
+  --border-main: #373737;
+  --border-soft: #303030;
+  --font-pixel: 'Share Tech Mono', 'IBM Plex Mono', Consolas, monospace;
+  --font-mono: 'IBM Plex Mono', Consolas, monospace;
 }
 
 *,
@@ -20,9 +27,11 @@
 body {
   margin: 0;
   background: var(--bg-main);
-  color: var(--ink-main);
-  font-family: var(--font-body);
+  color: var(--text-main);
+  font-family: var(--font-mono);
   min-height: 100vh;
+  font-size: 16px;
+  text-rendering: geometricPrecision;
 }
 
 #root {

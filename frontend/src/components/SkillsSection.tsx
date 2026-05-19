@@ -23,7 +23,7 @@ type SkillItem = {
 }
 
 type SkillGroup = {
-title: string
+  title: string
   description: string
   icon: IconType
   items: SkillItem[]
@@ -32,7 +32,7 @@ title: string
 const groups: SkillGroup[] = [
   {
     title: 'Backend',
-    description: 'Construcao de APIs, automacoes e logica de negocio.',
+    description: 'Construção de APIs, automações e lógica de negócio.',
     icon: HiCog6Tooth,
     items: [
       { name: 'Go', icon: SiGo },
@@ -52,7 +52,7 @@ const groups: SkillGroup[] = [
   },
   {
     title: 'Banco de Dados',
-    description: 'Modelagem, consultas e integracao de dados.',
+    description: 'Modelagem, consultas e integração de dados.',
     icon: HiCircleStack,
     items: [
       { name: 'PostgreSQL', icon: SiPostgresql },

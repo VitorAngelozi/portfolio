@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { ProjectRecord } from './projectData'
 
@@ -20,11 +20,17 @@ function ProjectModal({
   onNextSlide,
 }: ProjectModalProps) {
   const bodyRef = useRef<HTMLDivElement | null>(null)
+  const [imageViewerProjectId, setImageViewerProjectId] = useState<string | null>(null)
+  const isImageViewerOpen = imageViewerProjectId === project.id
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        onClose()
+        if (isImageViewerOpen) {
+          setImageViewerProjectId(null)
+        } else {
+          onClose()
+        }
       }
 
       if (event.key === 'ArrowLeft') {
@@ -43,7 +49,7 @@ function ProjectModal({
       document.body.style.overflow = ''
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [onClose, onNextSlide, onPreviousSlide])
+  }, [isImageViewerOpen, onClose, onNextSlide, onPreviousSlide])
 
   useEffect(() => {
     if (bodyRef.current) {
@@ -76,9 +82,14 @@ function ProjectModal({
               target="_blank"
               rel="noreferrer"
             >
-              Ver repositorio
+              Ver repositório
             </a>
-            <button type="button" className="showcase-modal__close" onClick={onClose} aria-label="Fechar projeto">
+            <button
+              type="button"
+              className="showcase-modal__close"
+              onClick={onClose}
+              aria-label="Fechar projeto"
+            >
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M6.7 5.3 12 10.6l5.3-5.3 1.4 1.4L13.4 12l5.3 5.3-1.4 1.4L12 13.4l-5.3 5.3-1.4-1.4L10.6 12 5.3 6.7z" />
               </svg>
@@ -110,13 +121,20 @@ function ProjectModal({
                 </svg>
               </button>
 
-              <img src={activeSlide.src} alt={activeSlide.alt} />
+              <button
+                type="button"
+                className="showcase-modal__image-zoom"
+                onClick={() => setImageViewerProjectId(project.id)}
+                aria-label="Abrir imagem em tamanho completo"
+              >
+                <img src={activeSlide.src} alt={activeSlide.alt} />
+              </button>
 
               <button
                 type="button"
                 className="showcase-modal__nav showcase-modal__nav--next"
                 onClick={onNextSlide}
-                aria-label="Proxima imagem"
+                aria-label="Próxima imagem"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m9.3 18.7-1.4-1.4 5.3-5.3-5.3-5.3 1.4-1.4 6.6 6.7z" />
@@ -144,12 +162,12 @@ function ProjectModal({
           <section className="showcase-modal__details">
             <article className="surface-card showcase-modal__info-card">
               <p className="showcase-card__eyebrow">Sobre o projeto</p>
-              <h4>{project.name} transforma pratica de programacao em progressao jogavel.</h4>
+              <h4>{project.name} transforma prática de programação em progressão jogável.</h4>
               <p>{project.about}</p>
             </article>
 
             <article className="surface-card showcase-modal__info-card">
-              <p className="showcase-card__eyebrow">Destaques tecnicos</p>
+              <p className="showcase-card__eyebrow">Destaques técnicos</p>
               <div className="showcase-card__meta-grid">
                 {project.meta.map((item) => (
                   <div key={item.label} className="showcase-card__meta-item">
@@ -182,6 +200,60 @@ function ProjectModal({
           </section>
         </div>
       </div>
+
+      {isImageViewerOpen ? (
+        <div
+          className="showcase-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Imagem ampliada de ${project.name}`}
+          onClick={() => setImageViewerProjectId(null)}
+        >
+          <button
+            type="button"
+            className="showcase-lightbox__close"
+            onClick={() => setImageViewerProjectId(null)}
+            aria-label="Fechar imagem ampliada"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.7 5.3 12 10.6l5.3-5.3 1.4 1.4L13.4 12l5.3 5.3-1.4 1.4L12 13.4l-5.3 5.3-1.4-1.4L10.6 12 5.3 6.7z" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            className="showcase-lightbox__nav showcase-lightbox__nav--prev"
+            onClick={(event) => {
+              event.stopPropagation()
+              onPreviousSlide()
+            }}
+            aria-label="Imagem anterior"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m14.7 5.3 1.4 1.4L10.8 12l5.3 5.3-1.4 1.4L8.1 12z" />
+            </svg>
+          </button>
+
+          <figure className="showcase-lightbox__figure" onClick={(event) => event.stopPropagation()}>
+            <img src={activeSlide.src} alt={activeSlide.alt} />
+            <figcaption>{activeSlide.label}</figcaption>
+          </figure>
+
+          <button
+            type="button"
+            className="showcase-lightbox__nav showcase-lightbox__nav--next"
+            onClick={(event) => {
+              event.stopPropagation()
+              onNextSlide()
+            }}
+            aria-label="Próxima imagem"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m9.3 18.7-1.4-1.4 5.3-5.3-5.3-5.3 1.4-1.4 6.6 6.7z" />
+            </svg>
+          </button>
+        </div>
+      ) : null}
     </div>,
     document.body,
   )

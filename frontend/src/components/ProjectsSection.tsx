@@ -57,7 +57,7 @@ function ProjectsSection() {
     >
       <SectionIntro
         title="Projeto em Destaque"
-        description="Uma apresentacao focada no produto, na experiencia e na arquitetura do projeto que melhor representa meu trabalho atual."
+        description="Uma apresentação focada no produto, na experiência e na arquitetura do projeto que melhor representa meu trabalho atual."
       />
 
       <div className="showcase-grid">
@@ -137,7 +137,7 @@ function ProjectsSection() {
                   rel="noreferrer"
                   onClick={(event) => event.stopPropagation()}
                 >
-                  Ver repositorio
+                  Ver repositório
                 </a>
               </div>
             </div>

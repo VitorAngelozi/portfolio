@@ -26,36 +26,36 @@ export const projects: ProjectRecord[] = [
   {
     id: 'codado',
     name: 'Codado',
-    title: 'Plataforma gamificada para pratica de programacao',
+    title: 'Plataforma gamificada para prática de programação',
     summary:
-      'Plataforma educacional interativa inspirada em terminais de linha de comando, criada para ensinar programacao com desafios de logica, depuracao de codigo e execucao de scripts em ambiente isolado.',
+      'Plataforma educacional interativa inspirada em terminais de linha de comando, criada para ensinar programação com desafios de lógica, depuração de código e execução de scripts em ambiente isolado.',
     modalSummary:
-      'Interface inspirada em terminal, desafios progressivos e arquitetura full stack com execucao segura de codigo.',
+      'Interface inspirada em terminal, desafios progressivos e arquitetura full stack com execução segura de código.',
     repositoryUrl: 'https://github.com/VitorAngelozi/CODADO',
     highlights: ['Go', 'Chi', 'React', 'TypeScript', 'Docker', 'OpenAPI', 'Python'],
     meta: [
       {
-        label: 'Experiencia',
-        value: 'Terminal retro com trilhas, niveis, XP, ranking e comandos',
+        label: 'Experiência',
+        value: 'Terminal retro com trilhas, níveis, XP, ranking e comandos',
       },
       {
         label: 'Arquitetura',
         value: 'Monorepo full stack com OpenAPI como contrato central',
       },
       {
-        label: 'Execucao segura',
+        label: 'Execução segura',
         value: 'Sandbox Docker para rodar scripts Python com isolamento',
       },
     ],
     about:
-      'A proposta combina interface inspirada em terminal, desafios progressivos e feedback visual para manter o estudo mais ativo. O usuario navega por trilhas, resolve questoes, depura scripts e acompanha sua evolucao por XP, ranking e progresso por protocolo.',
+      'A proposta combina interface inspirada em terminal, desafios progressivos e feedback visual para manter o estudo mais ativo. O usuário navega por trilhas, resolve questões, depura scripts e acompanha sua evolução por XP, ranking e progresso por protocolo.',
     architecturePoints: [
       'Monorepo full stack com frontend em React + TypeScript e backend em Go.',
-      'API REST em Go com Chi e contrato OpenAPI como fonte central da aplicacao.',
-      'Geracao automatica de tipos TypeScript a partir da especificacao da API.',
-      'Sandbox com Docker para execucao controlada de scripts Python.',
-      'Separacao modular entre dominio, camada HTTP, dados e infraestrutura.',
-      'Testes de contrato entre frontend e backend para validacao automatica da API.',
+      'API REST em Go com Chi e contrato OpenAPI como fonte central da aplicação.',
+      'Geração automática de tipos TypeScript a partir da especificação da API.',
+      'Sandbox com Docker para execução controlada de scripts Python.',
+      'Separação modular entre domínio, camada HTTP, dados e infraestrutura.',
+      'Testes de contrato entre frontend e backend para validação automática da API.',
     ],
     stack: [
       'Go',
@@ -73,26 +73,26 @@ export const projects: ProjectRecord[] = [
       {
         src: '/projects/codado/codado-01-home.png',
         alt: 'Tela inicial do Codado com trilhas, progresso e status em estilo terminal.',
-        label: 'Visao geral da plataforma',
+        label: 'Visão geral da plataforma',
       },
       {
         src: '/projects/codado/codado-02-terminal.png',
-        alt: 'Modo terminal do Codado com comandos e navegacao textual.',
+        alt: 'Modo terminal do Codado com comandos e navegação textual.',
         label: 'Terminal por comandos',
       },
       {
         src: '/projects/codado/codado-03-trilhas.png',
-        alt: 'Tela de trilhas e niveis da jornada de logica de programacao.',
-        label: 'Trilhas e progressao',
+        alt: 'Tela de trilhas e níveis da jornada de lógica de programação.',
+        label: 'Trilhas e progressão',
       },
       {
         src: '/projects/codado/codado-04-desafio.png',
-        alt: 'Tela de desafio com questao de multipla escolha em interface escura.',
+        alt: 'Tela de desafio com questão de múltipla escolha em interface escura.',
         label: 'Desafios interativos',
       },
       {
         src: '/projects/codado/codado-05-debug.png',
-        alt: 'Tela de depuracao de codigo com editor e desafio de correcao.',
+        alt: 'Tela de depuração de código com editor e desafio de correção.',
         label: 'Modo debug',
       },
     ],
